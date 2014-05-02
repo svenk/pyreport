@@ -511,10 +511,10 @@ def tex2pdf(filename, options):
         execute("dvips -E %s.dvi -o %s.eps" % (filename, filename))
     elif options.outtype == "pdf":
         if HAVE_PDFLATEX:
-            execute( "pdflatex --interaction scrollmode %s.tex -output-directory=%s" %(filename, os.path.dirname(filename)))
+            execute( "pdflatex --interaction scrollmode '%s.tex' -output-directory='%s'" %(filename, os.path.dirname(filename)))
         else:
-            execute("latex --interaction scrollmode %s.tex -output-directory=%s" %(filename, os.path.dirname(filename)))
-            execute("dvips -E %s.dvi -o %s.eps" % (filename, filename))
+            execute("latex --interaction scrollmode '%s.tex' -output-directory='%s'" %(filename, os.path.dirname(filename)))
+            execute("dvips -E '%s.dvi' -o '%s.eps'" % (filename, filename))
             print "Doing pdf %s" % filename
             execute("epstopdf %s.eps" % filename)
 
