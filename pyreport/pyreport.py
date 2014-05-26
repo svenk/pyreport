@@ -51,6 +51,12 @@ def commandline_call():
     else:
         pyfile = open(args[0],"r")
 
+        # fix include path
+        from os.path import dirname, abspath
+        path_of_pyfile = dirname(abspath(args[0]))
+        sys.path.insert(0, path_of_pyfile)
+        print sys.path
+
     # Store the name of the input file for later use
     options.update({'infilename':args[0]})
 
