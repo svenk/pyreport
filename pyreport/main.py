@@ -18,7 +18,7 @@ from traceback import format_exc
 import __builtin__ # to override import ! :->
 import platform
 import tokenize
-import token
+import token as pytoken # rename for when python target code uses "token" as variable
 
 # Local imports
 from options import allowed_types, default_options, HAVE_PDFLATEX, \
@@ -397,7 +397,7 @@ def py2commentblocks(string, firstlinenum, options):
             else:
                 last_token = tokendesc[0]
 
-        tokentype = token.tok_name[tokendesc[0]]
+        tokentype = pytoken.tok_name[tokendesc[0]]
         startpos = tokendesc[2][1]
         tokencontent = tokendesc[1]
         if tokendesc[2][0] > linenum:
